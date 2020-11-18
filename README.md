@@ -19,9 +19,7 @@ ali so politična nagnjenja v posamezni zvezni državi republikanska ali demokra
 
 Zvezne države bom med sabo primerjala glede na BDP na prebivalca in si ogledala, kako je bila višina BDPpc leta 2019 povezana z ostalimi zgorja omenjenimi dejavniki.
 
-Na koncu si bom ogledala še, kateri socialni oz. gospodarski kazalniki so skupni zveznim državam, ki se s PVI (Partisan Voting Index) nagibajo bolj na republikansko oz. na demokratsko stran.
-
-Podatke bom jemala iz leta 2019, PVI pa si bom ogledala na podlagi vseh volitev v zadnjem desetletju.
+Na koncu si bom ogledala še, kateri socialni oz. gospodarski kazalniki so skupni zveznim državam, ki se s PVI (Partisan Voting Index) nagibajo bolj na republikansko oz. na demokratsko stran (sicer bom podatke jemala iz leta 2019, PVI pa si bom ogledala na podlagi vseh volitev v zadnjem desetletju).
 
 Viri: 
 * https://data.census.gov/cedsci/ - CSV,
@@ -29,16 +27,12 @@ Viri:
 * https://en.wikipedia.org/ - HTML
 
 Vrstice bodo v vseh tabelah predstavljale posamezne zvezne države, ki bodo specificirane v prvem stolpcu,
-v ostalih stolpcih pa si bomo ogledali navedene spremenljivke
+v ostalih stolpcih pa si bom ogledala naslednje spremenljivke:
 
-* 1. tabela - `lastnosti prebivalstva`: 
-        št. prebivalcev || mediana starosti prebivalcev || delež moškega prebivalstva || delež belega prebivalstva 
-* 2. tabela - `dohodek in revščina`:
-        povprečen dohodek gospodinjstva || mediana dohodka gospodinjstev || delež revnega prebivalstva
-* 3. tabela - `otroci (od 3 do 17 let) v šolanju`:
-        delež trenutno šolanih otrok od 3 do 17 let || delež od teh otrok v privatnih šolskih ustanovah
-* 4. tabela - `BDP na prebivalca in politična usmerjenost`:
-        BDP per capita || PVI
+* 1. tabela - `lastnosti prebivalstva`: št. prebivalcev, mediana starosti prebivalcev, delež moškega prebivalstva, delež belega prebivalstva 
+* 2. tabela - `dohodek in revščina`: povprečen dohodek gospodinjstva, mediana dohodka gospodinjstev, delež revnega prebivalstva
+* 3. tabela - `otroci (od 3 do 17 let) v šolanju`: delež trenutno šolanih otrok od 3 do 17 let, delež od teh otrok v privatnih šolskih ustanovah
+* 4. tabela - `BDP na prebivalca in politična usmerjenost`: BDP per capita, PVI
 
 
 ## Program
