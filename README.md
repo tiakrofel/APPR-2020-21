@@ -24,20 +24,20 @@ Na koncu si bom ogledala še, kateri socialni oz. gospodarski kazalniki so skupn
 Podatke bom jemala iz leta 2019, PVI pa si bom ogledala na podlagi vseh volitev v zadnjem desetletju.
 
 Viri: 
-*https://data.census.gov/cedsci/ - CSV,
-*https://www.bea.gov/tools/ - CSV,
-*https://en.wikipedia.org/ - HTML
+* https://data.census.gov/cedsci/ - CSV,
+* https://www.bea.gov/tools/ - CSV,
+* https://en.wikipedia.org/ - HTML
 
 Vrstice bodo v vseh tabelah predstavljale posamezne zvezne države, ki bodo specificirane v prvem stolpcu,
 v ostalih stolpcih pa si bomo ogledali navedene spremenljivke
 
-*1. tabela - `lastnosti prebivalstva`: 
+* 1. tabela - `lastnosti prebivalstva`: 
         št. prebivalcev || mediana starosti prebivalcev || delež moškega prebivalstva || delež belega prebivalstva 
-*2. tabela - `dohodek in revščina`:
+* 2. tabela - `dohodek in revščina`:
         povprečen dohodek gospodinjstva || mediana dohodka gospodinjstev || delež revnega prebivalstva
-*3. tabela - `otroci (od 3 do 17 let) v šolanju`:
+* 3. tabela - `otroci (od 3 do 17 let) v šolanju`:
         delež trenutno šolanih otrok od 3 do 17 let || delež od teh otrok v privatnih šolskih ustanovah
-*4. tabela - `BDP na prebivalca in politična usmerjenost`:
+* 4. tabela - `BDP na prebivalca in politična usmerjenost`:
         BDP per capita || PVI
 
 
