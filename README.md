@@ -7,32 +7,45 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2020/21
 
 ## Analiza socialno-gospodarskih razlik med zveznimi državami ZDA
 
-Analizirala bom socialne in gospodarske razmere v posameznih zveznih državah ZDA v letu 2019, 
-in sicer njihovo starostno in spolno sestavo,
-povprečni mesečni dohodek gospodinjstev, 
-delež otrok (od 3 do 17 let), ki se trenutno šolajo, 
-kolikšen delež le-teh obiskuje privatne šole,
+Analizirala bom socialne in gospodarske razmere v posameznih zveznih državah ZDA 
+v letu 2019, in sicer njihovo starostno, spolno in rasno sestavo,
+mediano letnih dohodkov gospodinjstev, 
 delež prebivalstva, ki živi v revščini,
-rasno raznolikost,
-BDP per capita in
-ali so politična nagnjenja v posamezni zvezni državi republikanska ali demokratična (PVI).
+delež otrok (od 3 do 17 let), ki se trenutno šolajo, in
+kolikšen delež le-teh obiskuje privatne šole.
+Ogledala si bom še realni BDP na prebivalca v zadnjih desetih letih (2010-2019) 
+ter kam in kako močno se je posamezna zvezna država politično nagibala na volitvah 
+zadnjega desetletja (uporabila bom Cook Partisan Votig Index, krajše PVI).
 
-Zvezne države bom med sabo primerjala glede na BDP na prebivalca in si ogledala, kako je bila višina BDPpc leta 2019 povezana z ostalimi zgorja omenjenimi dejavniki.
+Nato bom analizirala, kako se je gibanje BDP na prebivalca v zadnjih desetih letih
+odražalo na politični usmerjenosti posamezne zvezne države in
+na trenutnih socialnih in gospodarskih razmerah.
 
-Na koncu si bom ogledala še, kateri socialni oz. gospodarski kazalniki so skupni zveznim državam, ki se s PVI (Partisan Voting Index) nagibajo bolj na republikansko oz. na demokratsko stran (sicer bom podatke jemala iz leta 2019, PVI pa si bom ogledala na podlagi vseh volitev v zadnjem desetletju).
+Na koncu si bom ogledala še, kateri socialni oz. gospodarski kazalniki so 
+trenutno skupni zveznim državam, ki se s PVI (Partisan Voting Index) nagibajo 
+bolj na republikansko oz. na demokratsko stran.
+
+Prav tako bom iskala medsebojne odvisnosti med analiziranimi trenutnimi 
+razmerami v vseh zveznih državah.
 
 Viri: 
-* https://data.census.gov/cedsci/ - CSV,
+* https://data.census.gov/cedsci/ - CSV, XLSX
 * https://www.bea.gov/tools/ - CSV,
 * https://en.wikipedia.org/ - HTML
 
-Vrstice bodo v vseh tabelah predstavljale posamezne zvezne države, ki bodo specificirane v prvem stolpcu,
+Vrstice bodo v vseh tabelah predstavljale posamezne zvezne države, 
+ki bodo specificirane v prvem stolpcu,
 v ostalih stolpcih pa si bom ogledala naslednje spremenljivke:
 
-* 1. tabela - `lastnosti prebivalstva`: št. prebivalcev, mediana starosti prebivalcev, delež moškega prebivalstva, delež belega prebivalstva 
-* 2. tabela - `dohodek in revščina`: povprečen dohodek gospodinjstva, mediana dohodka gospodinjstev, delež revnega prebivalstva
-* 3. tabela - `otroci (od 3 do 17 let) v šolanju`: delež trenutno šolanih otrok od 3 do 17 let, delež od teh otrok v privatnih šolskih ustanovah
-* 4. tabela - `BDP na prebivalca in politična usmerjenost`: BDP per capita, PVI
+1. tabela - `lastnosti prebivalstva`: 
+* št. prebivalcev, mediana starosti prebivalcev, delež moškega prebivalstva, delež belega prebivalstva 
+2. tabela - `dohodki, revščina in otroci v šolanju`: 
+* mediana letnih dohodkov gospodinjstev, delež revnega prebivalstva,
+delež trenutno šolanih otrok od 3 do 17 let, delež od teh otrok v privatnih šolskih ustanovah
+3. tabela - `politična usmerjenost`: 
+* PVI (na podlagi volitev v zadnjem desetletju)
+4. tabela - `BDP na prebivalca v zadnjih desetih letih`: 
+* Leto, BDP per capita
 
 
 ## Program
