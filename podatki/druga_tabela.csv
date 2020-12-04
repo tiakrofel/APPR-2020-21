@@ -1,51 +1,201 @@
-"Zvezna_drzava","Mediana_letnih_dohodkov","Delez_revnih","Delez_solanih_otrok","Delez_v_privat_solstvu"
-"Alabama",51734,0.155,0.891,0.138
-"Alaska",75463,0.101,0.883,0.108
-"Arizona",62055,0.135,0.886,0.102
-"Arkansas",48952,0.162,0.901,0.099
-"California",80440,0.118,0.913,0.113
-"Colorado",77127,0.093,0.913,0.112
-"Connecticut",78833,0.1,0.938,0.121
-"Delaware",70176,0.113,0.91,0.152
-"Florida",59227,0.127,0.91,0.167
-"Georgia",61980,0.133,0.911,0.122
-"Hawaii",83102,0.093,0.9,0.246
-"Idaho",60999,0.112,0.876,0.137
-"Illinois",69187,0.115,0.918,0.139
-"Indiana",57603,0.119,0.884,0.141
-"Iowa",61691,0.112,0.9,0.109
-"Kansas",62087,0.114,0.904,0.123
-"Kentucky",52295,0.163,0.875,0.139
-"Louisiana",51073,0.19,0.904,0.186
-"Maine",58924,0.109,0.898,0.136
-"Maryland",86738,0.09,0.903,0.177
-"Massachusetts",85843,0.094,0.926,0.131
-"Michigan",59584,0.13,0.904,0.125
-"Minnesota",74593,0.09,0.907,0.117
-"Mississippi",45792,0.196,0.916,0.144
-"Missouri",57409,0.129,0.896,0.156
-"Montana",57153,0.126,0.879,0.142
-"Nebraska",63229,0.099,0.898,0.164
-"Nevada",63276,0.125,0.879,0.088
-"New Hampshire",77933,0.073,0.919,0.133
-"New Jersey",85751,0.092,0.939,0.142
-"New Mexico",51945,0.182,0.9,0.095
-"New York",72108,0.13,0.921,0.169
-"North Carolina",57341,0.136,0.898,0.14
-"North Dakota",64577,0.106,0.856,0.1
-"Ohio",58642,0.131,0.896,0.159
-"Oklahoma",54449,0.152,0.904,0.108
-"Oregon",67058,0.114,0.893,0.14
-"Pennsylvania",63463,0.12,0.895,0.168
-"Rhode Island",71169,0.108,0.905,0.131
-"South Carolina",56227,0.138,0.9,0.124
-"South Dakota",59533,0.119,0.881,0.13
-"Tennessee",56071,0.139,0.894,0.158
-"Texas",64034,0.136,0.895,0.094
-"Utah",75780,0.089,0.904,0.098
-"Vermont",63001,0.102,0.932,0.09
-"Virginia",76456,0.099,0.908,0.144
-"Washington",78687,0.098,0.898,0.136
-"West Virginia",48850,0.16,0.875,0.086
-"Wisconsin",64168,0.104,0.902,0.143
-"Wyoming",65003,0.101,0.893,0.084
+"Zvezna_drzava","Socialni_kazalnik","Vrednost"
+"Alabama","Mediana_letnih_dohodkov",51734
+"Alabama","Delez_revnih",0.155
+"Alabama","Delez_solanih_otrok",0.891
+"Alabama","Delez_v_privat_solstvu",0.138
+"Alaska","Mediana_letnih_dohodkov",75463
+"Alaska","Delez_revnih",0.101
+"Alaska","Delez_solanih_otrok",0.883
+"Alaska","Delez_v_privat_solstvu",0.108
+"Arizona","Mediana_letnih_dohodkov",62055
+"Arizona","Delez_revnih",0.135
+"Arizona","Delez_solanih_otrok",0.886
+"Arizona","Delez_v_privat_solstvu",0.102
+"Arkansas","Mediana_letnih_dohodkov",48952
+"Arkansas","Delez_revnih",0.162
+"Arkansas","Delez_solanih_otrok",0.901
+"Arkansas","Delez_v_privat_solstvu",0.099
+"California","Mediana_letnih_dohodkov",80440
+"California","Delez_revnih",0.118
+"California","Delez_solanih_otrok",0.913
+"California","Delez_v_privat_solstvu",0.113
+"Colorado","Mediana_letnih_dohodkov",77127
+"Colorado","Delez_revnih",0.093
+"Colorado","Delez_solanih_otrok",0.913
+"Colorado","Delez_v_privat_solstvu",0.112
+"Connecticut","Mediana_letnih_dohodkov",78833
+"Connecticut","Delez_revnih",0.1
+"Connecticut","Delez_solanih_otrok",0.938
+"Connecticut","Delez_v_privat_solstvu",0.121
+"Delaware","Mediana_letnih_dohodkov",70176
+"Delaware","Delez_revnih",0.113
+"Delaware","Delez_solanih_otrok",0.91
+"Delaware","Delez_v_privat_solstvu",0.152
+"Florida","Mediana_letnih_dohodkov",59227
+"Florida","Delez_revnih",0.127
+"Florida","Delez_solanih_otrok",0.91
+"Florida","Delez_v_privat_solstvu",0.167
+"Georgia","Mediana_letnih_dohodkov",61980
+"Georgia","Delez_revnih",0.133
+"Georgia","Delez_solanih_otrok",0.911
+"Georgia","Delez_v_privat_solstvu",0.122
+"Hawaii","Mediana_letnih_dohodkov",83102
+"Hawaii","Delez_revnih",0.093
+"Hawaii","Delez_solanih_otrok",0.9
+"Hawaii","Delez_v_privat_solstvu",0.246
+"Idaho","Mediana_letnih_dohodkov",60999
+"Idaho","Delez_revnih",0.112
+"Idaho","Delez_solanih_otrok",0.876
+"Idaho","Delez_v_privat_solstvu",0.137
+"Illinois","Mediana_letnih_dohodkov",69187
+"Illinois","Delez_revnih",0.115
+"Illinois","Delez_solanih_otrok",0.918
+"Illinois","Delez_v_privat_solstvu",0.139
+"Indiana","Mediana_letnih_dohodkov",57603
+"Indiana","Delez_revnih",0.119
+"Indiana","Delez_solanih_otrok",0.884
+"Indiana","Delez_v_privat_solstvu",0.141
+"Iowa","Mediana_letnih_dohodkov",61691
+"Iowa","Delez_revnih",0.112
+"Iowa","Delez_solanih_otrok",0.9
+"Iowa","Delez_v_privat_solstvu",0.109
+"Kansas","Mediana_letnih_dohodkov",62087
+"Kansas","Delez_revnih",0.114
+"Kansas","Delez_solanih_otrok",0.904
+"Kansas","Delez_v_privat_solstvu",0.123
+"Kentucky","Mediana_letnih_dohodkov",52295
+"Kentucky","Delez_revnih",0.163
+"Kentucky","Delez_solanih_otrok",0.875
+"Kentucky","Delez_v_privat_solstvu",0.139
+"Louisiana","Mediana_letnih_dohodkov",51073
+"Louisiana","Delez_revnih",0.19
+"Louisiana","Delez_solanih_otrok",0.904
+"Louisiana","Delez_v_privat_solstvu",0.186
+"Maine","Mediana_letnih_dohodkov",58924
+"Maine","Delez_revnih",0.109
+"Maine","Delez_solanih_otrok",0.898
+"Maine","Delez_v_privat_solstvu",0.136
+"Maryland","Mediana_letnih_dohodkov",86738
+"Maryland","Delez_revnih",0.09
+"Maryland","Delez_solanih_otrok",0.903
+"Maryland","Delez_v_privat_solstvu",0.177
+"Massachusetts","Mediana_letnih_dohodkov",85843
+"Massachusetts","Delez_revnih",0.094
+"Massachusetts","Delez_solanih_otrok",0.926
+"Massachusetts","Delez_v_privat_solstvu",0.131
+"Michigan","Mediana_letnih_dohodkov",59584
+"Michigan","Delez_revnih",0.13
+"Michigan","Delez_solanih_otrok",0.904
+"Michigan","Delez_v_privat_solstvu",0.125
+"Minnesota","Mediana_letnih_dohodkov",74593
+"Minnesota","Delez_revnih",0.09
+"Minnesota","Delez_solanih_otrok",0.907
+"Minnesota","Delez_v_privat_solstvu",0.117
+"Mississippi","Mediana_letnih_dohodkov",45792
+"Mississippi","Delez_revnih",0.196
+"Mississippi","Delez_solanih_otrok",0.916
+"Mississippi","Delez_v_privat_solstvu",0.144
+"Missouri","Mediana_letnih_dohodkov",57409
+"Missouri","Delez_revnih",0.129
+"Missouri","Delez_solanih_otrok",0.896
+"Missouri","Delez_v_privat_solstvu",0.156
+"Montana","Mediana_letnih_dohodkov",57153
+"Montana","Delez_revnih",0.126
+"Montana","Delez_solanih_otrok",0.879
+"Montana","Delez_v_privat_solstvu",0.142
+"Nebraska","Mediana_letnih_dohodkov",63229
+"Nebraska","Delez_revnih",0.099
+"Nebraska","Delez_solanih_otrok",0.898
+"Nebraska","Delez_v_privat_solstvu",0.164
+"Nevada","Mediana_letnih_dohodkov",63276
+"Nevada","Delez_revnih",0.125
+"Nevada","Delez_solanih_otrok",0.879
+"Nevada","Delez_v_privat_solstvu",0.088
+"New Hampshire","Mediana_letnih_dohodkov",77933
+"New Hampshire","Delez_revnih",0.073
+"New Hampshire","Delez_solanih_otrok",0.919
+"New Hampshire","Delez_v_privat_solstvu",0.133
+"New Jersey","Mediana_letnih_dohodkov",85751
+"New Jersey","Delez_revnih",0.092
+"New Jersey","Delez_solanih_otrok",0.939
+"New Jersey","Delez_v_privat_solstvu",0.142
+"New Mexico","Mediana_letnih_dohodkov",51945
+"New Mexico","Delez_revnih",0.182
+"New Mexico","Delez_solanih_otrok",0.9
+"New Mexico","Delez_v_privat_solstvu",0.095
+"New York","Mediana_letnih_dohodkov",72108
+"New York","Delez_revnih",0.13
+"New York","Delez_solanih_otrok",0.921
+"New York","Delez_v_privat_solstvu",0.169
+"North Carolina","Mediana_letnih_dohodkov",57341
+"North Carolina","Delez_revnih",0.136
+"North Carolina","Delez_solanih_otrok",0.898
+"North Carolina","Delez_v_privat_solstvu",0.14
+"North Dakota","Mediana_letnih_dohodkov",64577
+"North Dakota","Delez_revnih",0.106
+"North Dakota","Delez_solanih_otrok",0.856
+"North Dakota","Delez_v_privat_solstvu",0.1
+"Ohio","Mediana_letnih_dohodkov",58642
+"Ohio","Delez_revnih",0.131
+"Ohio","Delez_solanih_otrok",0.896
+"Ohio","Delez_v_privat_solstvu",0.159
+"Oklahoma","Mediana_letnih_dohodkov",54449
+"Oklahoma","Delez_revnih",0.152
+"Oklahoma","Delez_solanih_otrok",0.904
+"Oklahoma","Delez_v_privat_solstvu",0.108
+"Oregon","Mediana_letnih_dohodkov",67058
+"Oregon","Delez_revnih",0.114
+"Oregon","Delez_solanih_otrok",0.893
+"Oregon","Delez_v_privat_solstvu",0.14
+"Pennsylvania","Mediana_letnih_dohodkov",63463
+"Pennsylvania","Delez_revnih",0.12
+"Pennsylvania","Delez_solanih_otrok",0.895
+"Pennsylvania","Delez_v_privat_solstvu",0.168
+"Rhode Island","Mediana_letnih_dohodkov",71169
+"Rhode Island","Delez_revnih",0.108
+"Rhode Island","Delez_solanih_otrok",0.905
+"Rhode Island","Delez_v_privat_solstvu",0.131
+"South Carolina","Mediana_letnih_dohodkov",56227
+"South Carolina","Delez_revnih",0.138
+"South Carolina","Delez_solanih_otrok",0.9
+"South Carolina","Delez_v_privat_solstvu",0.124
+"South Dakota","Mediana_letnih_dohodkov",59533
+"South Dakota","Delez_revnih",0.119
+"South Dakota","Delez_solanih_otrok",0.881
+"South Dakota","Delez_v_privat_solstvu",0.13
+"Tennessee","Mediana_letnih_dohodkov",56071
+"Tennessee","Delez_revnih",0.139
+"Tennessee","Delez_solanih_otrok",0.894
+"Tennessee","Delez_v_privat_solstvu",0.158
+"Texas","Mediana_letnih_dohodkov",64034
+"Texas","Delez_revnih",0.136
+"Texas","Delez_solanih_otrok",0.895
+"Texas","Delez_v_privat_solstvu",0.094
+"Utah","Mediana_letnih_dohodkov",75780
+"Utah","Delez_revnih",0.089
+"Utah","Delez_solanih_otrok",0.904
+"Utah","Delez_v_privat_solstvu",0.098
+"Vermont","Mediana_letnih_dohodkov",63001
+"Vermont","Delez_revnih",0.102
+"Vermont","Delez_solanih_otrok",0.932
+"Vermont","Delez_v_privat_solstvu",0.09
+"Virginia","Mediana_letnih_dohodkov",76456
+"Virginia","Delez_revnih",0.099
+"Virginia","Delez_solanih_otrok",0.908
+"Virginia","Delez_v_privat_solstvu",0.144
+"Washington","Mediana_letnih_dohodkov",78687
+"Washington","Delez_revnih",0.098
+"Washington","Delez_solanih_otrok",0.898
+"Washington","Delez_v_privat_solstvu",0.136
+"West Virginia","Mediana_letnih_dohodkov",48850
+"West Virginia","Delez_revnih",0.16
+"West Virginia","Delez_solanih_otrok",0.875
+"West Virginia","Delez_v_privat_solstvu",0.086
+"Wisconsin","Mediana_letnih_dohodkov",64168
+"Wisconsin","Delez_revnih",0.104
+"Wisconsin","Delez_solanih_otrok",0.902
+"Wisconsin","Delez_v_privat_solstvu",0.143
+"Wyoming","Mediana_letnih_dohodkov",65003
+"Wyoming","Delez_revnih",0.101
+"Wyoming","Delez_solanih_otrok",0.893
+"Wyoming","Delez_v_privat_solstvu",0.084

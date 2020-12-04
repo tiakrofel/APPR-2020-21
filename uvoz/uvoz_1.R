@@ -59,7 +59,9 @@ delez.moskih <- function() {
     mutate("Delez_moskih"=round(`St_moski_na_100_zensk`/
                                   (`St_moski_na_100_zensk` + 100), 3)) %>%
     select(-4) %>%
-    inner_join(delez.belcev(), `Zvezna_drzava`=`Zvezna_drzava`)
+    inner_join(delez.belcev(), `Zvezna_drzava`=`Zvezna_drzava`) %>%
+    pivot_longer(c(-Zvezna_drzava), names_to="Lastnost_prebivalstva",
+      values_to="Vrednost")  
 }
 prva_tabela <- delez.moskih()
 
@@ -91,8 +93,12 @@ delez.solanih <- function() {
 uvoz0 <- delez.revnih()
 uvoz1 <- delez.solanih()
 druga_tabela <- uvoz0 %>%
-  inner_join(uvoz1, Zvezna_drzava=Zvezna_drzava)
-
+  inner_join(uvoz1, Zvezna_drzava=Zvezna_drzava) %>%
+  pivot_longer(
+    c(-Zvezna_drzava),
+    names_to="Socialni_kazalnik",
+    values_to="Vrednost"
+  )
 
 # Tretja tabela
 uvozi.html <- function(){
@@ -108,8 +114,11 @@ uvozi.html <- function(){
   }
   colnames(tabela) <- c("Zvezna_drzava", "PVI")
   return(tabela[1:2])
-}
-tretja_tabela <- uvozi.html()
+} 
+tretja_tabela <- uvozi.html() %>%
+  mutate(PVI = replace(PVI, PVI == "EVEN", "E+0")) %>%
+  separate(PVI, into = c("Stranka", "Nagib"), sep = "\\+") %>%
+  mutate(`Nagib` = sapply(`Nagib`, as.numeric))
 
 # Četrta tabela
 najprej.uvozi <- function() {
