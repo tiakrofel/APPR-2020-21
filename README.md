@@ -17,35 +17,37 @@ Ogledala si bom še realni BDP na prebivalca v zadnjih desetih letih (2010-2019)
 ter kam in kako močno se je posamezna zvezna država politično nagibala na volitvah 
 zadnjega desetletja (uporabila bom Cook Partisan Votig Index, krajše PVI).
 
-Nato bom analizirala, kako se je gibanje BDP na prebivalca v zadnjih desetih letih
-odražalo na politični usmerjenosti posamezne zvezne države in
-na trenutnih socialnih in gospodarskih razmerah.
+Iskala bom medsebojne odvisnosti med trenutnimi razmerami v vseh zveznih državah ter
+analizirala, kakšen je bil vpliv gibanja BDP na prebivalca v zadnjih desetih letih
+na politično usmerjenost posamezne zvezne države.
 
 Na koncu si bom ogledala še, kateri socialni oz. gospodarski kazalniki so 
 trenutno skupni zveznim državam, ki se s PVI (Partisan Voting Index) nagibajo 
 bolj na republikansko oz. na demokratsko stran.
 
-Prav tako bom iskala medsebojne odvisnosti med analiziranimi trenutnimi 
-razmerami v vseh zveznih državah.
+### Viri
 
-Viri: 
 * https://data.census.gov/cedsci/ - CSV, XLSX
-* https://www.bea.gov/tools/ - CSV,
+* https://www.bea.gov/tools/ - CSV
 * https://en.wikipedia.org/ - HTML
 
-Vrstice bodo v vseh tabelah predstavljale posamezne zvezne države, 
-ki bodo specificirane v prvem stolpcu,
-v ostalih stolpcih pa si bom ogledala naslednje spremenljivke:
+### Tabele
 
-1. tabela - `lastnosti prebivalstva`: 
-* št. prebivalcev, mediana starosti prebivalcev, delež moškega prebivalstva, delež belega prebivalstva 
-2. tabela - `dohodki, revščina in otroci v šolanju`: 
+Urejeni podatki se nahajajo v štirih razpredelnicah.
+Vse meritve si bom ogledala za vsako zvezno državo posebej, 
+zato bo v razpredelnicah v prvem stolpcu vedno ta spremenljivka,
+v ostalih stolpcih pa si bom ogledala:
+
+1. tabela - `Lastnosti prebivalstva`: 
+* št. prebivalcev, mediana starosti prebivalcev, razmerje med spoloma, št. belcev 
+2. tabela - `Socialni kazalniki`: 
 * mediana letnih dohodkov gospodinjstev, delež revnega prebivalstva,
-delež trenutno šolanih otrok od 3 do 17 let, delež od teh otrok v privatnih šolskih ustanovah
-3. tabela - `politična usmerjenost`: 
-* PVI (na podlagi volitev v zadnjem desetletju)
-4. tabela - `BDP na prebivalca v zadnjih desetih letih`: 
-* Leto, BDP per capita
+število otrok (od 3. do 17. leta), število trenutno šolanih otrok, 
+delež od teh otrok v privatnih šolskih ustanovah
+3. tabela - `Politična usmerjenost`: 
+* stranka, nagib
+4. tabela - `BDP in velikost populacije v zadnjem desetletju`: 
+* leto, BDP, populacija
 
 
 ## Program

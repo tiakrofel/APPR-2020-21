@@ -1,6 +1,6 @@
 ---
-title: "Poročilo pri predmetu Analiza podatkov s programom R"
-author: "Študent FMF"
+title: "Analiza socialno-gospodarskih razlik med zveznimi državami ZDA"
+author: "Tia Krofel"
 output:
   html_document: default
   pdf_document:
@@ -22,11 +22,7 @@ source("lib/libraries.r", encoding="UTF-8")
 source("lib/rstudio.r", encoding="UTF-8")
 ```
 
-# Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
-
-![](slike/grb.png)
 
 ***
 
@@ -36,26 +32,39 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 source("uvoz/uvoz.r", encoding="UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Podatke imamo v dveh razpredelnicah v obliki *tidy data*.
+Uvozila sem podatke o zveznih državah ZDA v obliki CSV in XLSX z uradne spletne strani
+ameriškega cezusa, v obliki CSV z ameriškega urada za ekonomsko analizo ter v obliki HTML
+z Wikipedije. Podatke imam v štirih razpredelnicah v obliki *tidy data*.
 
-1. `druzine` - podatki o družinah za vsako občino
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več),
-  - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število).
+1. `Lastnosti prebivalstva` - podatki o lastnostih prebivalstva za vsako zvezno državo
+  - `Zvezna_drzava` - spremenljivka: ime zvezne države (character),
+  - `Lastnost_prebivalstva` - spremenljivka: vrsta meritve, katero lastnost prebivalstva merimo (character),
+  - `Prebivalstvo` - meritev: število prebivalcev (numeric),
+  - `Mediana_starosti` - meritev: mediana starosti prebivalcev (numeric),
+  - `Razmerje_spolov` - meritev: število prebivalcev moškega spola na 100 prebivalcev ženskega spola (numeric),
+  - `Belci` - meritev: število belega prebivalstva (numeric).
 
-2. `obcine` - podatki o občinah
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `povrsina` - meritev: površina občine v km$^2$ (število),
-  - `prebivalci` - meritev: prebivalstvo občine (število),
-  - `gostota` - meritev: število prebivalcev na km$^2$ (število),
-  - `naselja` - meritev: število naselij v občini (število),
-  - `ustanovitev` - meritev: leto ustanovitve občine (število),
-  - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor),
-  - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor),
-  - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo).
+2. `Socialni kazalniki` - podatki o socialnih razmerah v vsaki zvezni državi
+  - `Zvezna_drzava` - spremenljivka: ime zvezne države (character),
+  - `Socialni_kazalnik` - spremenljivka: vrsta meritve, kateri socialni kazalnik opazujemo (character),
+  - `Mediana_letnih_dohodkov` - meritev: mediana letnih dohodkov prebivalstva (numeric),
+  - `Delez_revnih` - meritev: delež prebivalstva, ki živi pod mejo revščine (numeric),
+  - `St_otrok` - meritev: število otrok (od 3. do 7. leta), ki se trenutno izobražuje (numeric),
+  - `St_solanih` - meritev: število otrok (od 3. do 7. leta), ki se trenutno izobražujejo (numeric),
+  - `Delez_privat` - meritev: delež šolanih otrok, ki se trenutno izobražuje v privatnih šolskih institucijah.
+  
+3. `Politična usmerjenost` - podatki o politični usmerjenosti v vsaki zvezni državi
+v preteklem desetletju
+  - `Zvezna_drzava` - spremenljivka: ime zvezne države (character),
+  - `Stranka` - meritev: politična stranka, ki ji je bil namenjen večji delež glasov na volitvah zadnjega desetletja; R predstavlja republikansko stranko, D demokratično, N pa pomeni, da so bili glasovi med njima enakomerno porazdeljeni (character),
+  - `Nagib` - meritev: višje, kot je število, bolj izrazit je bil nagib v smer opredeljene stranke v posamezni zvezni državi (numeric).
 
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
+4. `BDP in število prebivalcev` - podatki o spreminjanju BDP-ja in števila prebivalcev v posameznih zveznih državah skozi zadnjih deset let
+  - `Zvezna_drzava` - spremenljivka: ime zvezne države (character),
+  - `Leto` - spremenljivka: leto meritve (numeric),
+  - `BDP` - meritev: realen BDP, izražen v milijonih dolarjev z osnovo v letu 2012 (numeric),
+  - `Populacija` - meritev: število prebivalcev (numeric).
+
 
 Spodnji graf prikazuje porazdelitev števila naselij v občinah.
 
