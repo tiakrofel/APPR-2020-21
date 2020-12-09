@@ -29,20 +29,52 @@ source("lib/rstudio.r", encoding="UTF-8")
 # Obdelava, uvoz in čiščenje podatkov
 
 ```{r uvoz}
-source("uvoz/uvoz.r", encoding="UTF-8")
+source("uvoz/uvoz_1.r", encoding="UTF-8")
 ```
 
-Uvozila sem podatke o zveznih državah ZDA v obliki CSV in XLSX z uradne spletne strani
+Analizirala bom socialne in gospodarske razmere v posameznih zveznih državah ZDA v letu 2019, in sicer njihovo starostno, spolno in rasno sestavo, mediano letnih dohodkov gospodinjstev, delež prebivalstva, ki živi v revščini, delež otrok (od 3 do 17 let), ki se trenutno šolajo, in kolikšen delež le-teh obiskuje privatne šole. Ogledala si bom še realni BDP na prebivalca v zadnjih desetih letih (2010-2019) ter kam in kako močno se je posamezna zvezna država politično nagibala na volitvah zadnjega desetletja (uporabila bom Cook Partisan Votig Index, krajše PVI).
+
+
+Podatke o zveznih državah ZDA sem uvozila v obliki CSV in XLSX z uradne spletne strani
 ameriškega cezusa, v obliki CSV z ameriškega urada za ekonomsko analizo ter v obliki HTML
-z Wikipedije. Podatke imam v štirih razpredelnicah v obliki *tidy data*.
+z Wikipedije:
+
+* <https://en.wikipedia.org/wiki/Cook_Partisan_Voting_Index> 
+* <https://apps.bea.gov/iTable/iTable.cfm?7001=1200&7002=1&7003=200&7004=sic&7005=1&7006=xx&7007=-1&7035=-1&7036=-1&7090=70&7093=levels&isuri=1&reqid=70&step=10>
+* <https://data.census.gov/cedsci/advanced>
+* <https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html>
+
+Podatke imam v štirih razpredelnicah v obliki *tidy data*.
 
 1. `Lastnosti prebivalstva` - podatki o lastnostih prebivalstva za vsako zvezno državo
   - `Zvezna_drzava` - spremenljivka: ime zvezne države (character),
   - `Lastnost_prebivalstva` - spremenljivka: vrsta meritve, katero lastnost prebivalstva merimo (character),
   - `Prebivalstvo` - meritev: število prebivalcev (numeric),
-  - `Mediana_starosti` - meritev: mediana starosti prebivalcev (numeric),
+  - `Mediana_starosti` - meritev: mediana starosti prebivalcev, tj. v posamezni zvezni 
+  državi je polovica prebivalstva mlajša od te starosti, polovica pa starejša (numeric),
   - `Razmerje_spolov` - meritev: število prebivalcev moškega spola na 100 prebivalcev ženskega spola (numeric),
   - `Belci` - meritev: število belega prebivalstva (numeric).
+
+Na spodnjih histogramih si lahko ogledamo porazdelitev lastnosti prebivalstva po zveznih državah.
+
+```{r starosti, fig.align='center'}
+ggplot(prva_tabela %>%
+         filter(Lastnost_prebivalstva=="Mediana_starosti"),
+       aes(x=Vrednost)) + geom_histogram() +
+  xlab("Mediana starosti") + ylab("Število zveznih držav") +
+  ggtitle("Porazdelitev mediane starosti")
+```
+
+```{r spoli, fig.align='center'}
+ggplot(prva_tabela %>%
+         filter(Lastnost_prebivalstva=="Razmerje_spolov") %>%
+         group_by(Zvezna_drzava) %>%
+         summarise(delez = round(Vrednost/(Vrednost + 100), 3)),
+       aes(x=delez)) + geom_histogram() +
+  xlab("Delež oseb moškega spola") + ylab("Število zveznih držav") +
+  ggtitle("Porazdelitev spolne sestave prebivalstva")
+```
+
 
 2. `Socialni kazalniki` - podatki o socialnih razmerah v vsaki zvezni državi
   - `Zvezna_drzava` - spremenljivka: ime zvezne države (character),
@@ -52,7 +84,36 @@ z Wikipedije. Podatke imam v štirih razpredelnicah v obliki *tidy data*.
   - `St_otrok` - meritev: število otrok (od 3. do 7. leta), ki se trenutno izobražuje (numeric),
   - `St_solanih` - meritev: število otrok (od 3. do 7. leta), ki se trenutno izobražujejo (numeric),
   - `Delez_privat` - meritev: delež šolanih otrok, ki se trenutno izobražuje v privatnih šolskih institucijah.
-  
+
+Spodnji histogrami prikazujejo porazdelitev različnih socialnih dejavnikov v zveznih državah.
+
+```{r revni, fig.align='center'}
+ggplot(druga_tabela %>%
+         filter(Socialni_kazalnik=="Delez_revnih"),
+       aes(x=Vrednost)) + geom_histogram() +
+  xlab("Delež revnega prebivalstva") + ylab("Število zveznih držav") +
+  ggtitle("Porazdelitev revnega prebivalstva")
+```
+
+
+```{r dohodek, fig.align='center'}
+ggplot(druga_tabela %>%
+         filter(Socialni_kazalnik=="Mediana_dohodkov"),
+       aes(x=Vrednost)) + geom_histogram() +
+  xlab("Mediana letnih dohodkov") + ylab("Število zveznih držav") +
+  ggtitle("Porazdelitev mediane dohodkov")
+```
+
+
+```{r privat, fig.align='center'}
+ggplot(druga_tabela %>%
+         filter(Socialni_kazalnik == "Delez_privat"),
+       aes(x=Vrednost)) + geom_histogram() +
+  xlab("Delež otrok v privatnem šolstvu") + ylab("Število zveznih držav") +
+  ggtitle("Porazdelitev privat šolanih otrok")
+```
+
+
 3. `Politična usmerjenost` - podatki o politični usmerjenosti v vsaki zvezni državi
 v preteklem desetletju
   - `Zvezna_drzava` - spremenljivka: ime zvezne države (character),
@@ -65,52 +126,51 @@ v preteklem desetletju
   - `BDP` - meritev: realen BDP, izražen v milijonih dolarjev z osnovo v letu 2012 (numeric),
   - `Populacija` - meritev: število prebivalcev (numeric).
 
+Spodnji graf prikazuje gibanje BDP per capita v vsaki zvezni državi posebej v obdobju 2010 - 2019.
 
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
-
-```{r histogram, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-ggplot(obcine, aes(x=naselja)) + geom_histogram() +
-  ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin")
+```{r bdp, fig.align='center'}
+ggplot(cetrta_tabela %>%
+         group_by(Zvezna_drzava) %>%
+         summarise(BDPpp = round(10^6 * BDP/Populacija, 0),
+                   Leto = Leto),
+       aes(x=Leto, y=BDPpp, group=Zvezna_drzava)) + 
+  geom_line() + facet_wrap(~Zvezna_drzava, ncol=7) +
+  scale_x_continuous(breaks = c(2012, 2017))  +
+  scale_y_continuous(breaks = c(40000, 60000, 80000)) +
+  xlab("Leto") + ylab("BDP na prebivalca") +
+  ggtitle("Spreminjanje BDP na prebivalca skozi zadnje desetletje")
 ```
+
+***
+
+# Preliminarna analiza podatkov
+
+Na podlagi zgornjih vizualizacij lahko vidimo, da so lastnosti prebivalstva
+v zveznih državah razporejene dokaj enakomerno, medtem ko pri socialnih kazalnikih 
+prihaja do večje razpršenosti, kar pomeni, da so med zveznimi državami prisotne 
+večje socialne razlike.
+
+V zadnjem grafu pa je opazno, da se je BDP na prebivalca, izračunan na podlagi
+podatkov iz četrte tabele, gibal skozi zadnje desetletje v posameznih zveznih 
+državah različno - vidimo lahko tako velika nihanja kot konstantne rasti.
+To pomeni, da se zvezne države med seboj razlikujejo tudi z gospodarskega vidika. 
+
+V nadaljevanju bom analizirala medsebojne povezave med posameznimi socialnimi kazalniki 
+(npr. ali je v zveznih državah z večjim odstotkom revščine nižja mediana dohodkov),
+povezave med gibanjem BDP-ja v državah, ki se politično nagibajo k republikanski 
+oziroma demokratski stranki, ter kateri socialni kazalniki so skupni zveznim državam, 
+ki so si podobne tako s političnega vidika kot tudi z vidika trenutnega BDP na prebivalca.
 
 ***
 
 # Analiza in vizualizacija podatkov
 
-```{r vizualizacija, results='hide'}
-source("vizualizacija/vizualizacija.r", encoding="UTF-8")
-```
 
-Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
-
-```{r zemljevid, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-tm_shape(merge(zemljevid, povprecja, by.x="OB_UIME", by.y="obcina")) +
-  tm_polygons("povprecje", title="Povprečje") +
-  tm_layout(title="Povprečno število otrok v družini")
-```
 
 ***
 
 # Napredna analiza podatkov
 
-```{r analiza}
-source("analiza/analiza.r", encoding="UTF-8")
-```
-
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
-
-```{r graf, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-ggplot(inner_join(obcine, data.frame(obcina=names(skupine),
-                                     skupina=factor(skupine)), by="obcina")
-, aes(x=povrsina, y=naselja, color=skupina, size=prebivalci/1000)) + geom_point() +
-  ggtitle("Število naselij glede na površino občine") +
-  xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
-  guides(color=guide_legend(title="Skupina"),
-         size=guide_legend(title="Prebivalci (* 1000)"))
-```
 
 ***
 
-```{r shiny}
-shinyAppDir("shiny", options=list(width="100%", height=600))
-```

@@ -58,12 +58,15 @@ revni <- uvozi.csv(tabela.revni, st.revni, max.revni)
 sola <- uvozi.csv(tabela.sol, st.sol, max.sol)[-4]
 
 # Prva tabela
-prva_tabela <- ljudje %>% inner_join(belci, Zvezna_drzava=Zvezna_drzava) %>%
+prva <- function() {
+  ljudje %>% inner_join(belci, Zvezna_drzava=Zvezna_drzava) %>%
   pivot_longer(
     c(-Zvezna_drzava),
     names_to="Lastnost_prebivalstva",
     values_to="Vrednost"
-  )  
+  )
+}
+prva_tabela <- prva()
 
 # Druga tabela
 delez.revnih <- function() {
@@ -88,18 +91,24 @@ solanje <- function() {
 }
 uvoz0 <- delez.revnih()
 uvoz1 <- solanje()
-druga_tabela <- uvoz0 %>%
+druga <- function() {
+  uvoz0 %>%
   inner_join(uvoz1, Zvezna_drzava=Zvezna_drzava) %>%
   pivot_longer(
     c(-Zvezna_drzava),
     names_to="Socialni_kazalnik",
     values_to="Vrednost")
+  }
+druga_tabela <- druga()
 
 # Tretja tabela
-tretja_tabela <- uvozi.html() %>%
-  mutate(PVI = replace(PVI, PVI == "EVEN", "E+0")) %>%
+tretja <- function() {
+  uvozi.html() %>%
+  mutate(PVI = replace(PVI, PVI == "EVEN", "N+0")) %>%
   separate(PVI, into = c("Stranka", "Nagib"), sep = "\\+") %>%
   mutate(`Nagib` = sapply(`Nagib`, as.numeric))
+  }
+tretja_tabela <- tretja()
 
 # Četrta tabela
 uvozi.bdp <- function() {
@@ -107,7 +116,7 @@ uvozi.bdp <- function() {
                    skip=4, n_max=50)[-1]
   uvoz %>% rename("Zvezna_drzava"=1) %>% 
     pivot_longer(c(-Zvezna_drzava), names_to="Leto", values_to="BDP")
-}
+  }
 bdp <- uvozi.bdp()
 
 uvozi.populacijo <- function() {
@@ -119,7 +128,21 @@ uvozi.populacijo <- function() {
     pivot_longer(c(-Zvezna_drzava), names_to="Leto", values_to="Populacija") 
 }
 populacija <- uvozi.populacijo()
+cetrta <- function() {
+   bdp %>% inner_join(populacija, Zvezna_drzava=Zvezna_drzava) %>%
+     mutate(`Leto`=sapply(`Leto`, as.numeric))
+ }
+cetrta_tabela <- cetrta()
 
-cetrta_tabela <- bdp %>% inner_join(populacija, Zvezna_drzava=Zvezna_drzava) %>%
-  mutate(`Leto`=sapply(`Leto`, as.numeric))
+
+
+
+
+
+
+
+
+
+
+
 
