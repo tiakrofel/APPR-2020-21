@@ -74,7 +74,7 @@ graf.belci.spoli <- ggplot(raz_prva %>%
                            aes(x=Delez_belci, y=Delez_moski, colour=Stranka)) +
   geom_point(aes(size=Nagib)) + scale_colour_manual(values = c("Lightblue", "Gray", "Indianred")) +
   xlab("Delež belega prebivalstva") + ylab("Delež moškega prebivalstva") +
-  ggtitle("Deležem moškega in belega prebivalstva leta 2019")
+  ggtitle("Delež moškega in belega prebivalstva leta 2019")
 
 graf.starosti.spoli <- ggplot(raz_prva %>% 
                              inner_join(tretja_tabela, Zvezna_drzava=Zvezna_drzava),
