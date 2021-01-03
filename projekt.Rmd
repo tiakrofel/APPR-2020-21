@@ -55,25 +55,6 @@ Podatke imam v štirih razpredelnicah v obliki *tidy data*.
   - `Razmerje_spolov` - meritev: število prebivalcev moškega spola na 100 prebivalcev ženskega spola (numeric),
   - `Belci` - meritev: število belega prebivalstva (numeric).
 
-Na spodnjih histogramih si lahko ogledamo porazdelitev lastnosti prebivalstva po zveznih državah.
-
-```{r starosti, fig.align='center'}
-ggplot(prva_tabela %>%
-         filter(Lastnost_prebivalstva=="Mediana_starosti"),
-       aes(x=Vrednost)) + geom_histogram() +
-  xlab("Mediana starosti") + ylab("Število zveznih držav") +
-  ggtitle("Porazdelitev mediane starosti")
-```
-
-```{r spoli, fig.align='center'}
-ggplot(prva_tabela %>%
-         filter(Lastnost_prebivalstva=="Razmerje_spolov") %>%
-         group_by(Zvezna_drzava) %>%
-         summarise(delez = round(Vrednost/(Vrednost + 100), 3)),
-       aes(x=delez)) + geom_histogram() +
-  xlab("Delež oseb moškega spola") + ylab("Število zveznih držav") +
-  ggtitle("Porazdelitev spolne sestave prebivalstva")
-```
 
 
 2. `Socialni kazalniki` - podatki o socialnih razmerah v vsaki zvezni državi
@@ -81,37 +62,9 @@ ggplot(prva_tabela %>%
   - `Socialni_kazalnik` - spremenljivka: vrsta meritve, kateri socialni kazalnik opazujemo (character),
   - `Mediana_letnih_dohodkov` - meritev: mediana letnih dohodkov prebivalstva (numeric),
   - `Delez_revnih` - meritev: delež prebivalstva, ki živi pod mejo revščine (numeric),
-  - `St_otrok` - meritev: število otrok (od 3. do 7. leta), ki se trenutno izobražuje (numeric),
-  - `St_solanih` - meritev: število otrok (od 3. do 7. leta), ki se trenutno izobražujejo (numeric),
+  - `Otroci` - meritev: število otrok (od 3. do 7. leta) (numeric),
+  - `Solani` - meritev: število otrok, ki se trenutno izobražujejo (numeric),
   - `Delez_privat` - meritev: delež šolanih otrok, ki se trenutno izobražuje v privatnih šolskih institucijah.
-
-Spodnji histogrami prikazujejo porazdelitev različnih socialnih dejavnikov v zveznih državah.
-
-```{r revni, fig.align='center'}
-ggplot(druga_tabela %>%
-         filter(Socialni_kazalnik=="Delez_revnih"),
-       aes(x=Vrednost)) + geom_histogram() +
-  xlab("Delež revnega prebivalstva") + ylab("Število zveznih držav") +
-  ggtitle("Porazdelitev revnega prebivalstva")
-```
-
-
-```{r dohodek, fig.align='center'}
-ggplot(druga_tabela %>%
-         filter(Socialni_kazalnik=="Mediana_dohodkov"),
-       aes(x=Vrednost)) + geom_histogram() +
-  xlab("Mediana letnih dohodkov") + ylab("Število zveznih držav") +
-  ggtitle("Porazdelitev mediane dohodkov")
-```
-
-
-```{r privat, fig.align='center'}
-ggplot(druga_tabela %>%
-         filter(Socialni_kazalnik == "Delez_privat"),
-       aes(x=Vrednost)) + geom_histogram() +
-  xlab("Delež otrok v privatnem šolstvu") + ylab("Število zveznih držav") +
-  ggtitle("Porazdelitev privat šolanih otrok")
-```
 
 
 3. `Politična usmerjenost` - podatki o politični usmerjenosti v vsaki zvezni državi
@@ -126,37 +79,19 @@ v preteklem desetletju
   - `BDP` - meritev: realen BDP, izražen v milijonih dolarjev z osnovo v letu 2012 (numeric),
   - `Populacija` - meritev: število prebivalcev (numeric).
 
-Spodnji graf prikazuje gibanje BDP per capita v vsaki zvezni državi posebej v obdobju 2010 - 2019.
-
-```{r bdp, fig.align='center'}
-ggplot(cetrta_tabela %>%
-         group_by(Zvezna_drzava) %>%
-         summarise(BDPpp = round(10^6 * BDP/Populacija, 0),
-                   Leto = Leto),
-       aes(x=Leto, y=BDPpp, group=Zvezna_drzava)) + 
-  geom_line() + facet_wrap(~Zvezna_drzava, ncol=7) +
-  scale_x_continuous(breaks = c(2012, 2017))  +
-  scale_y_continuous(breaks = c(40000, 60000, 80000)) +
-  xlab("Leto") + ylab("BDP na prebivalca") +
-  ggtitle("Spreminjanje BDP na prebivalca skozi zadnje desetletje")
-```
-
 ***
 
 # Preliminarna analiza podatkov
 
-Na podlagi zgornjih vizualizacij lahko vidimo, da so lastnosti prebivalstva
-v zveznih državah razporejene dokaj enakomerno, medtem ko pri socialnih kazalnikih 
-prihaja do večje razpršenosti, kar pomeni, da so med zveznimi državami prisotne 
-večje socialne razlike.
+Na podlagi preliminarne analize podatkov smo ugotovili, da so lastnosti 
+prebivalstva v zveznih državah razporejene dokaj enakomerno, medtem ko pri 
+socialnih kazalnikih prihaja do večje razpršenosti, kar pomeni, da so med 
+zveznimi državami prisotne večje socialne razlike. 
 
-V zadnjem grafu pa je opazno, da se je BDP na prebivalca, izračunan na podlagi
-podatkov iz četrte tabele, gibal skozi zadnje desetletje v posameznih zveznih 
-državah različno - vidimo lahko tako velika nihanja kot konstantne rasti.
+Videli smo, da se je BDP na prebivalca skozi zadnje desetletje gibal v zveznih državah različno - prisotna so tako velika nihanja kot konstantne rasti.
 To pomeni, da se zvezne države med seboj razlikujejo tudi z gospodarskega vidika. 
 
-V nadaljevanju bom analizirala medsebojne povezave med posameznimi socialnimi kazalniki 
-(npr. ali je v zveznih državah z večjim odstotkom revščine nižja mediana dohodkov),
+V nadaljevanju bom analizirala medsebojne povezave med posameznimi socialnimi kazalniki (npr. ali je v zveznih državah z večjim odstotkom revščine nižja mediana dohodkov),
 povezave med gibanjem BDP-ja v državah, ki se politično nagibajo k republikanski 
 oziroma demokratski stranki, ter kateri socialni kazalniki so skupni zveznim državam, 
 ki so si podobne tako s političnega vidika kot tudi z vidika trenutnega BDP na prebivalca.
@@ -165,8 +100,57 @@ ki so si podobne tako s političnega vidika kot tudi z vidika trenutnega BDP na 
 
 # Analiza in vizualizacija podatkov
 
+```{r vizualizacija, results='hide'}
+source("vizualizacija/vizualizacija.r", encoding="UTF-8")
+```
+
+Na spodnjih grafih so posamezne zvezne države predstavljene z bodisi sivimi bodisi rdečimi oziroma modrimi točkami (odvisno od politične usmerjenosti), ki so različnih velikosti (odvisno od intenzitete nagiba proti določeni stranki).
 
 
+Na prvem grafu je prikazana medsebojna odvisnost med deležem moškega in deležem belega prebivalstva ter politično usmerjenostjo.
+
+```{r graf.belci.spoli, fig.align='center'}
+graf.belci.spoli
+```
+
+
+Na naslednjem grafu je prikazana medsebojna odvisnost med deležem moškega prebivalstva in mediano starosti ter politično usmerjenostjo.
+
+```{r graf.starosti.spoli, fig.align='center'}
+graf.starosti.spoli
+```
+
+
+Na spodnjem grafu sta prikazana delež revnega prebivalstva in mediana letnih dohodkov.
+
+```{r graf.dohodek.revni, fig.align='center'}
+graf.dohodek.revni
+```
+
+
+Na spodnjem grafu pa je prikazana medsebojna odvisnost mediane letnih dohodkov in BDP na prebivalca.
+
+```{r graf.bdp19.dohodki, fig.align='center'}
+graf.bdp19.dohodki
+```
+
+
+Spodnji graf prikazuje porazdelitev BDP na prebivalca leta 2019 posebej v zveznih državah, ki se nagibajo bolj proti demokratski stranki in tistih, ki se nagibajo bolj proti republikanski.
+
+```{r graf.eks, fig.align='center', echo=FALSE, message=FALSE, warning=FALSE}
+graf.eks
+```
+
+
+Na spodnjem zemljevidu so prikazana politična nagnjenja zveznih držav v zadnjem desetletju, kjer D predstavlja demokratko stranko, R republikansko, N pa nevtralno pozicijo zvezne države, tj. se v povprečju ni nagibala proti eni stranki bolj kot proti drugi. Na desnem histogramu je predstavljeno število zveznih držav, obarvanih določene barve.
+```{r map1, fig.align='center', echo=FALSE, message=FALSE, warning=FALSE}
+map1
+```
+
+Spodnji zemljevid pa prikazuje višino BDP na prebivalca v posameznih zveznih državah leta 2019. Na desnem histogramu je predstavljeno število zveznih držav, ki se nahajajo znotraj posameznih razredov višine BDP per capita.
+```{r map2, fig.align='center', echo=FALSE, message=FALSE, warning=FALSE}
+map2
+```
 ***
 
 # Napredna analiza podatkov

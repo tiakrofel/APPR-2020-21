@@ -7,6 +7,11 @@ library(shiny)
 library(openxlsx)
 library(readxl)
 library(ggplot2)
+library(rgdal)
+library(rgeos)
+library(mosaic)
+library(maptools)
+library(sf)
 
 options(gsubfn.engine="R")
 

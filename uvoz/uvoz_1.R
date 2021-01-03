@@ -17,6 +17,7 @@ tabela.doh <- "podatki/dohodki.csv"
 tabela.rase <- "podatki/rase.csv"
 tabela.revni <- "podatki/revscina.csv" 
 tabela.sol <- "podatki/solanje.csv"
+
 st.pop <- c("Zvezna_drzava", "Prebivalstvo",
             "Mediana_starosti",
             "Razmerje_spolov")
@@ -29,13 +30,16 @@ st.sol <- c("Zvezna_drzava", "Otroci",
             "Solani", 
             "Javno",
             "Delez_privat")
+
 max.pop <- 4
 max.doh <- 4
 max.rase <- 2
 max.revni <- 4
 max.sol <- 4
 
+
 # Funkcija, ki uvozi podatke iz Wikipedije
+
 uvozi.html <- function(){
   link <- "https://en.wikipedia.org/wiki/Cook_Partisan_Voting_Index#By_state"
   stran <- html_session(link) %>% read_html()
@@ -57,7 +61,9 @@ belci <- uvozi.csv(tabela.rase, st.rase, max.rase)
 revni <- uvozi.csv(tabela.revni, st.revni, max.revni)
 sola <- uvozi.csv(tabela.sol, st.sol, max.sol)[-4]
 
+
 # Prva tabela
+
 prva <- function() {
   ljudje %>% inner_join(belci, Zvezna_drzava=Zvezna_drzava) %>%
   pivot_longer(
@@ -66,7 +72,9 @@ prva <- function() {
     values_to="Vrednost"
   )
 }
+
 prva_tabela <- prva()
+
 
 # Druga tabela
 delez.revnih <- function() {
@@ -76,6 +84,7 @@ delez.revnih <- function() {
     inner_join(denar, `Zvezna_drzava`=`Zvezna_drzava`) %>%
     select(1,3,2)
 }
+
 solanje <- function() {
   sola %>%
     mutate("Otroci"=
@@ -89,8 +98,11 @@ solanje <- function() {
                "%", "", `Delez_privat`), 
                as.numeric)) 
 }
+
 uvoz0 <- delez.revnih()
+
 uvoz1 <- solanje()
+
 druga <- function() {
   uvoz0 %>%
   inner_join(uvoz1, Zvezna_drzava=Zvezna_drzava) %>%
@@ -98,25 +110,32 @@ druga <- function() {
     c(-Zvezna_drzava),
     names_to="Socialni_kazalnik",
     values_to="Vrednost")
-  }
+}
+
 druga_tabela <- druga()
 
+
 # Tretja tabela
+
 tretja <- function() {
   uvozi.html() %>%
-  mutate(PVI = replace(PVI, PVI == "EVEN", "N+0")) %>%
+  mutate(PVI = replace(PVI, PVI == "EVEN", "N+5")) %>%
   separate(PVI, into = c("Stranka", "Nagib"), sep = "\\+") %>%
   mutate(`Nagib` = sapply(`Nagib`, as.numeric))
-  }
+}
+
 tretja_tabela <- tretja()
 
+
 # Četrta tabela
+
 uvozi.bdp <- function() {
   uvoz <- read_csv("podatki/bdp_10-19.csv", locale=locale(encoding="utf-8"), 
                    skip=4, n_max=50)[-1]
   uvoz %>% rename("Zvezna_drzava"=1) %>% 
     pivot_longer(c(-Zvezna_drzava), names_to="Leto", values_to="BDP")
-  }
+}
+
 bdp <- uvozi.bdp()
 
 uvozi.populacijo <- function() {
@@ -127,11 +146,13 @@ uvozi.populacijo <- function() {
     mutate("Zvezna_drzava"=gsub("^\\.", "", `Zvezna_drzava`)) %>% 
     pivot_longer(c(-Zvezna_drzava), names_to="Leto", values_to="Populacija") 
 }
+
 populacija <- uvozi.populacijo()
 cetrta <- function() {
    bdp %>% inner_join(populacija, Zvezna_drzava=Zvezna_drzava) %>%
      mutate(`Leto`=sapply(`Leto`, as.numeric))
- }
+}
+
 cetrta_tabela <- cetrta()
 
 
