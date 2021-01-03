@@ -29,7 +29,7 @@ source("lib/rstudio.r", encoding="UTF-8")
 # Obdelava, uvoz in čiščenje podatkov
 
 ```{r uvoz}
-source("uvoz/uvoz_1.r", encoding="UTF-8")
+source("uvoz/uvoz_1.R", encoding="UTF-8")
 ```
 
 Analizirala bom socialne in gospodarske razmere v posameznih zveznih državah ZDA v letu 2019, in sicer njihovo starostno, spolno in rasno sestavo, mediano letnih dohodkov gospodinjstev, delež prebivalstva, ki živi v revščini, delež otrok (od 3 do 17 let), ki se trenutno šolajo, in kolikšen delež le-teh obiskuje privatne šole. Ogledala si bom še realni BDP na prebivalca v zadnjih desetih letih (2010-2019) ter kam in kako močno se je posamezna zvezna država politično nagibala na volitvah zadnjega desetletja (uporabila bom Cook Partisan Votig Index, krajše PVI).
