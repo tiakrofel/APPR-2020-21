@@ -177,6 +177,26 @@ graf.eks
 
 <br>
 
+Spodnji graf prikazuje gibanje BDP per capita v vsaki zvezni državi posebej v obdobju 2010 - 2019.
+
+<br>
+
+```{r graf.posamezne.bdp.stranka, fig.align='center', echo=FALSE, message=FALSE, warning=FALSE}
+graf.posamezne.bdp.stranka
+```
+
+<br>
+
+Na spodnjem grafu pa je prikazano gibanje povprečnega BDP per capita v obdobju 2010 - 2019, in sicer združeno za tiste zvezne države, ki so se politično nagibale k isti stranki.
+
+<br>
+
+```{r graf.stranki.bdp, fig.align='center', echo=FALSE, message=FALSE, warning=FALSE}
+graf.stranki.bdp
+```
+
+<br>
+
 Za bolj jasno predstavo političnih nagnjenj v ZDA kot celoti si spodaj oglejmo zemljevid, kjer so države obarvane glede na politično usmerjenost v zadnjem desetletju (zopet D predstavlja demokratko stranko, R republikansko, N pa nevtralno pozicijo zvezne države, tj. se v povprečju ni nagibala proti nobeni stranki bolj kot proti drugi). 
 
 Na histogramu desno od grafa pa je predstavljeno še število zveznih držav, obarvanih določene barve.
@@ -187,7 +207,7 @@ map1
 
 Spodnji zemljevid ZDA prikazuje še višino BDP na prebivalca v posameznih zveznih državah leta 2019. 
 
-Na histogramu desno od grafa pa je predstavljeno število zveznih držav, ki se nahajajo znotraj posameznih razredov višine BDP na prebivalca.
+Na histogramu desno od grafa pa je predstavljeno število zveznih držav, ki se nahajajo znotraj posameznih razredov višine BDP per capita.
 
 ```{r map2, fig.align='center', echo=FALSE, message=FALSE, warning=FALSE}
 map2
@@ -198,4 +218,14 @@ map2
 
 
 ***
+
+# Shiny 
+
+Tukaj lahko vidimo še podrobnejši prikaz gibanja BDP na prebivalca v zadnjih desetih letih
+za vsako izmed zveznih držav posebej, tako da si jo lahko sami izberemo ter si ogledamo te
+podatke izključno zanjo.
+
+```{r shiny, echo=FALSE}
+shinyAppDir("shiny", options=list(width="100%", height=600))
+```
 

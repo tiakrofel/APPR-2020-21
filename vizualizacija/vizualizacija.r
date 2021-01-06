@@ -57,6 +57,16 @@ graf.posamezne.bdp.stranka <- ggplot(osnova,
   xlab("Leto") + ylab("BDP na prebivalca ($)") +
   ggtitle("Spreminjanje BDP na prebivalca skozi zadnje desetletje")
 
+graf.stranki.bdp <- ggplot(osnova %>%
+                             group_by(Stranka, Leto) %>%
+                             summarise(bdp = mean(BDPpp), Leto=Leto, Stranka=Stranka),
+                           aes(x=Leto, y=bdp, colour=Stranka)) +
+  scale_colour_manual(values = c("Lightblue", "Gray", "Indianred")) +
+  geom_line() + geom_point() + 
+  scale_x_continuous(breaks = c(2010, 2013, 2016, 2019))  +
+  xlab("Leto") + ylab("BDP na prebivalca ($)") +
+  ggtitle("Povprečen BDP na prebivalca glede na politična nagnjenja")
+  
 
 # Povezava med BDPpp v letu 2019 in ostalimi dejavniki ter strankami
 
