@@ -51,7 +51,7 @@ graf.eks <- ggplot(osnova_2019 %>%
 graf.posamezne.bdp.stranka <- ggplot(osnova,
        aes(x=Leto, y=BDPpp, group=Zvezna_drzava, colour=Stranka)) + 
   scale_colour_manual(values = c("Lightblue", "Gray", "Indianred")) +
-  geom_line() + facet_wrap(~Zvezna_drzava, ncol=7) +
+  geom_line(size=0.8) + facet_wrap(~Zvezna_drzava, ncol=5) +
   scale_x_continuous(breaks = c(2012, 2017))  +
   scale_y_continuous(breaks = c(40000, 80000)) +
   xlab("Leto") + ylab("BDP na prebivalca ($)") +

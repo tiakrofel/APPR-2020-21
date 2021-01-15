@@ -36,6 +36,7 @@ source("uvoz/uvoz_1.R", encoding="UTF-8")
 
 Analizirala bom socialne in gospodarske razmere v posameznih zveznih državah ZDA v letu 2019, in sicer njihovo starostno, spolno in rasno sestavo, mediano letnih dohodkov gospodinjstev, delež prebivalstva, ki živi v revščini, delež otrok (od 3 do 17 let), ki se trenutno šolajo, in kolikšen delež le-teh obiskuje privatne šole. Ogledala si bom še realni BDP na prebivalca v zadnjih desetih letih (2010-2019) ter kam in kako močno se je posamezna zvezna država politično nagibala na volitvah zadnjega desetletja (uporabila bom Cook Partisan Votig Index, krajše PVI).
 
+<br>
 
 Podatke o zveznih državah ZDA sem uvozila v obliki CSV in XLSX z uradne spletne strani
 ameriškega cezusa, v obliki CSV z ameriškega urada za ekonomsko analizo ter v obliki HTML
@@ -46,7 +47,11 @@ z Wikipedije:
 * <https://data.census.gov/cedsci/advanced>
 * <https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html>
 
+<br>
+
 Podatke imam v štirih razpredelnicah v obliki *tidy data*.
+
+<br>
 
 1. `Lastnosti prebivalstva` - podatki o lastnostih prebivalstva za vsako zvezno državo
   - `Zvezna_drzava` - spremenljivka: ime zvezne države (character),
@@ -181,7 +186,7 @@ Spodnji graf prikazuje gibanje BDP per capita v vsaki zvezni državi posebej v o
 
 <br>
 
-```{r graf.posamezne.bdp.stranka, fig.align='center', echo=FALSE, message=FALSE, warning=FALSE}
+```{r graf.posamezne.bdp.stranka, fig.align='center', echo=FALSE, fig.height=10, fig.width=10, message=FALSE, warning=FALSE}
 graf.posamezne.bdp.stranka
 ```
 
@@ -212,10 +217,33 @@ Na histogramu desno od grafa pa je predstavljeno število zveznih držav, ki se 
 ```{r map2, fig.align='center', echo=FALSE, message=FALSE, warning=FALSE}
 map2
 ```
+
+
+
 ***
 
 # Napredna analiza podatkov
 
+```{r analiza, echo=FALSE, message=FALSE, warning=FALSE}
+source("analiza/analiza.r", encoding = "UTF-8")
+```
+
+
+Na podlagi zgornjih grafov, ki prikazujejo trend rasti povprečnega BDP na prebivalca skozi zadnjih deset let ne glede na politično usmerjenost (razlike so sicer v višini in intenzivnosti te rasti), je spodnjna napoved še nadaljnega dviga povprečnega BDP per capita v Združenih državah Amerike pričakovana, vendar ne upošteva krize, saj je leta 2019 (tj. zadnje leto, za katero imamo podatke) še ni bilo. Gre torej za logično predikcijo na podlagi zbranih podatkov, a se bo neizbežno izkazala za nepravilno zaradi nepredvidljivih dogodkov v "prihodnosti".
+
+<br>
+
+```{r graf.odstopanje, echo=FALSE, fig.align='center'}
+graf.odstopanje
+```
+
+<br>
+
+Na spodnjem zemljevidu si lahko ogledamo še, kakšna bi bila po metodi voditeljev razporeditev zveznih držav v tri skupine, ki, za razliko od prikaza na prvem zemljevidu, niso odvisne od politične usmerjenosti, temveč od višine BDP per capita leta 2019, ki je prikazana na drugem izmed zgornjih dveh zemljevidov.
+
+```{r map3, fig.align='center', echo=FALSE, message=FALSE, warning=FALSE}
+map3
+```
 
 ***
 
@@ -223,7 +251,9 @@ map2
 
 Tukaj lahko vidimo še podrobnejši prikaz gibanja BDP na prebivalca v zadnjih desetih letih
 za vsako izmed zveznih držav posebej, tako da si jo lahko sami izberemo ter si ogledamo te
-podatke izključno zanjo.
+podatke in trend rasti izključno zanjo.
+
+<br>
 
 ```{r shiny, echo=FALSE}
 shinyAppDir("shiny", options=list(width="100%", height=600))
