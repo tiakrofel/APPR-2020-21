@@ -228,6 +228,17 @@ map2
 source("analiza/analiza.r", encoding = "UTF-8")
 ```
 
+
+Na podlagi zgornjih grafov, ki prikazujejo trend rasti povprečnega BDP na prebivalca skozi zadnjih deset let ne glede na politično usmerjenost (razlike so sicer v višini in intenzivnosti te rasti), je spodnjna napoved še nadaljnega dviga povprečnega BDP per capita v Združenih državah Amerike pričakovana, vendar ne upošteva krize, saj je leta 2019 (tj. zadnje leto, za katero imamo podatke) še ni bilo. Gre torej za logično predikcijo na podlagi zbranih podatkov, a se bo neizbežno izkazala za nepravilno zaradi nepredvidljivih dogodkov v "prihodnosti".
+
+<br>
+
+```{r graf.napoved, echo=FALSE, fig.align='center'}
+graf.napoved
+```
+
+<br>
+
 Na spodnjem zemljevidu si lahko ogledamo še, kakšna bi bila po metodi voditeljev razporeditev zveznih držav v tri skupine, ki, za razliko od prikaza na prvem zemljevidu, niso odvisne od politične usmerjenosti, temveč od višine BDP per capita leta 2019, ki je prikazana na drugem izmed zgornjih dveh zemljevidov.
 
 ```{r map3, fig.align='center', echo=FALSE, message=FALSE, warning=FALSE}
