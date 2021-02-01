@@ -42,8 +42,8 @@ graf.eks <- ggplot(osnova_2019 %>%
                      summarise(bdp=BDPpp, Stranka=Stranka),
                    aes(x=Stranka, y=bdp, group=Stranka)) + 
   geom_violin(aes(fill=Stranka), show.legend=FALSE) + scale_fill_manual(values = c("Lightblue", "Indianred")) +
-  ylab("BDP na prebivalca ($)") + 
-  ggtitle("Porazdelitev BDP na prebivalca leta 2019 glede na politično nagnjenost")
+  ylab("BDP per capita ($)") + 
+  ggtitle("Porazdelitev BDP per capita leta 2019 glede na politično nagnjenost")
   
 
 # Graf, ki prikazuje gibanje BDP per capita in politično usmerjenost v letih 2010 - 2019 za vsako zvezno državo posebej
@@ -54,8 +54,8 @@ graf.posamezne.bdp.stranka <- ggplot(osnova,
   geom_line(size=0.8) + facet_wrap(~Zvezna_drzava, ncol=5) +
   scale_x_continuous(breaks = c(2012, 2017))  +
   scale_y_continuous(breaks = c(40000, 80000)) +
-  xlab("Leto") + ylab("BDP na prebivalca ($)") +
-  ggtitle("Spreminjanje BDP na prebivalca skozi zadnje desetletje")
+  xlab("Leto") + ylab("BDP per capita ($)") +
+  ggtitle("Spreminjanje BDP per capita skozi zadnje desetletje")
 
 graf.stranki.bdp <- ggplot(osnova %>%
                              group_by(Stranka, Leto) %>%
@@ -64,8 +64,8 @@ graf.stranki.bdp <- ggplot(osnova %>%
   scale_colour_manual(values = c("Lightblue", "Gray", "Indianred")) +
   geom_line() + geom_point() + 
   scale_x_continuous(breaks = c(2010, 2013, 2016, 2019))  +
-  xlab("Leto") + ylab("BDP na prebivalca ($)") +
-  ggtitle("Povprečen BDP na prebivalca glede na politična nagnjenja")
+  xlab("Leto") + ylab("BDP per capita ($)") +
+  ggtitle("Povprečen BDP per capita glede na politična nagnjenja")
   
 
 # Povezava med BDPpp v letu 2019 in ostalimi dejavniki ter strankami
@@ -79,7 +79,7 @@ graf.bdp19.dohodki <- ggplot(osnova_2019 %>%
                                inner_join(raz_druga, Zvezna_drzava=Zvezna_drzava),
                              aes(x=Mediana_dohodkov, y=BDPpp, colour=Stranka, size=Nagib)) + 
   geom_point() + scale_colour_manual(values = c("Lightblue", "Gray", "Indianred")) +
-  xlab("Mediana letnih dohodkov") + ylab("BDP na prebivalca ($)") +
+  xlab("Mediana letnih dohodkov") + ylab("BDP per capita ($)") +
   ggtitle("Mediana letnih dohodkov in BDP per capita leta 2019 ($)") +
   labs(size="Intenziteta nagiba proti stranki")
 
@@ -91,7 +91,7 @@ graf.belci.spoli <- ggplot(raz_prva %>%
   geom_point() + scale_colour_manual(values = c("Lightblue", "Gray", "Indianred")) +
   xlab("Delež belega prebivalstva") + ylab("Delež moškega prebivalstva") +
   ggtitle("Delež moškega in belega prebivalstva leta 2019") + 
-  labs(size="BDP per capita")
+  labs(size="BDP per capita ($)")
 
 graf.starosti.spoli <- ggplot(raz_prva %>% 
                              inner_join(osnova_2019, Zvezna_drzava=Zvezna_drzava),
@@ -99,7 +99,7 @@ graf.starosti.spoli <- ggplot(raz_prva %>%
   geom_point() + scale_colour_manual(values = c("Lightblue", "Gray", "Indianred")) +
   xlab("Mediana starosti") + ylab("Delež moškega prebivalstva") +
   ggtitle("Mediana starosti in delež moškega prebivalstva leta 2019") + 
-  labs(size="Višina BDP per capita")
+  labs(size="BDP per capita ($)")
 
 
 # Medsebojne odvisnosti posameznih socialnih kazalnikov
@@ -110,7 +110,7 @@ graf.dohodek.revni <- ggplot(sk, aes(x=Delez_revnih, y=Mediana_dohodkov, colour=
   xlab("Delež revnega prebivalstva") + 
   ylab("Mediana letnih dohodkov ($)") +
   ggtitle("Delež revnega prebivalstva in mediana letnih dohodkov leta 2019") + 
-  labs(size="BDP per capita")
+  labs(size="BDP per capita ($)")
 
 graf.solani.privat <- ggplot(sk %>%
                                group_by(Zvezna_drzava) %>%
@@ -121,7 +121,7 @@ graf.solani.privat <- ggplot(sk %>%
   xlab("Delež šolanih otrok") + 
   ylab("Delež otrok v privat šolah") +
   ggtitle("Delež šolanih otrok in delež otrok v privat šolskih ustanovah leta 2019") + 
-  labs(size="BDP per capita")
+  labs(size="BDP per capita ($)")
 
 
 # Zbrani podatki za delo z zemljevidom
@@ -143,7 +143,7 @@ map1 <- tm_shape(merge(zemljevid, tab.z, by.x="STATE_NAME", by.y="Zvezna_drzava"
   tm_layout(legend.outside=TRUE) + 
   tm_text("STATE_ABBR", size=0.3)
 
-# Drugi zemljevid prikazuje višino BDP na prebivalca v letu 2019, in sicer s temnejše obarvanimi zveznimi državimi, kjer je bil BDP per capita višji
+# Drugi zemljevid prikazuje višino BDP per capita v letu 2019
 
 map2 <- tm_shape(merge(zemljevid, tab.z, by.x="STATE_NAME", by.y="Zvezna_drzava"), simplify = 0.2) +
   tm_polygons("bdp", legend.hist=TRUE, title="BDP per capita leta 2019", palette = "Greys") + 

@@ -224,12 +224,14 @@ map2
 
 # Napredna analiza podatkov
 
+<br>
+
 ```{r analiza, echo=FALSE, message=FALSE, warning=FALSE}
 source("analiza/analiza.r", encoding = "UTF-8")
 ```
 
 
-Na podlagi zgornjih grafov, ki prikazujejo trend rasti povprečnega BDP na prebivalca skozi zadnjih deset let ne glede na politično usmerjenost (razlike so sicer v višini in intenzivnosti te rasti), je spodnjna napoved še nadaljnega dviga povprečnega BDP per capita v Združenih državah Amerike pričakovana, vendar ne upošteva krize, saj je leta 2019 (tj. zadnje leto, za katero imamo podatke) še ni bilo. Gre torej za logično predikcijo na podlagi zbranih podatkov, a se bo neizbežno izkazala za nepravilno zaradi nepredvidljivih dogodkov v "prihodnosti".
+Na podlagi zgornjih grafov, ki prikazujejo trend rasti povprečnega BDP na prebivalca skozi zadnjih deset let ne glede na politično usmerjenost (razlike so sicer v višini in intenzivnosti te rasti), je spodnja napoved še nadaljnega dviga povprečnega BDP per capita v Združenih državah Amerike pričakovana, vendar ne upošteva krize, saj je leta 2019 (tj. zadnje leto, za katero imamo podatke) še ni bilo. Gre torej za logično predikcijo na podlagi zbranih podatkov, a se bo neizbežno izkazala za nepravilno zaradi nepredvidljivih dogodkov v "prihodnosti".
 
 <br>
 
@@ -249,9 +251,11 @@ map3
 
 # Shiny 
 
-Tukaj lahko vidimo še podrobnejši prikaz gibanja BDP na prebivalca v zadnjih desetih letih
+<br>
+
+Na koncu pa vidimo še podrobnejši prikaz gibanja BDP na prebivalca v zadnjih desetih letih
 za vsako izmed zveznih držav posebej, tako da si jo lahko sami izberemo ter si ogledamo te
-podatke in trend rasti izključno zanjo.
+podatke in trend rasti v tem obdobju izključno zanjo.
 
 <br>
 

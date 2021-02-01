@@ -14,7 +14,7 @@ graf.napoved <- ggplot(podatki.napoved, aes(x=Leto, y=bdp)) +
   geom_point() + 
   geom_smooth(method=lm, color="black", size=0.1, formula = y ~ I(x) + I(x^2)) +
   scale_x_continuous(breaks = c(2010, 2013, 2016, 2019, 2022))  +
-  ylab("BDP na prebivalca ($)") + 
+  ylab("BDP per capita ($)") + 
   ggtitle("Napoved gibanja povprečnega BDP per capita v ZDA")
 
 
@@ -26,7 +26,7 @@ vdtl <- kmeans(koncni, 3, nstart = 1e3)
 razdelitev <- data.frame(Zvezna_drzava=osnova_2019$Zvezna_drzava, Skupina=factor(vdtl$cluster))
 
 map3 <- tm_shape(merge(zemljevid, razdelitev, by.x="STATE_NAME", by.y="Zvezna_drzava"), simplify = 0.2) +
-  tm_polygons("Skupina", palette = "Greys") + 
+  tm_polygons("Skupina", palette = "Set2") + 
   tm_layout(legend.outside=TRUE) + tm_text("STATE_ABBR", size=0.3) 
 
 
